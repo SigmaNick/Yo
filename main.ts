@@ -6,6 +6,26 @@ scene.onHitWall(SpriteKind.Player, function (sprite, location) {
         sprite.vy = 0
     }
 })
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    projectilePlayer = sprites.create(img`
+        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . . . . . 
+        . . . . . 4 4 4 4 4 . . . . . . 
+        . . . 4 4 4 5 5 5 d 4 4 4 4 . . 
+        . . 4 d 5 d 5 5 5 d d d 4 4 . . 
+        . . 4 5 5 1 1 1 d d 5 5 5 4 . . 
+        . 4 5 5 5 1 1 1 5 1 1 5 5 4 4 . 
+        . 4 d d 1 1 5 5 5 1 1 5 5 d 4 . 
+        . 4 5 5 1 1 5 1 1 5 5 d d d 4 . 
+        . 2 5 5 5 d 1 1 1 5 1 1 5 5 2 . 
+        . 2 d 5 5 d 1 1 1 5 1 1 5 5 2 . 
+        . . 2 4 d d 5 5 5 5 d d 5 4 . . 
+        . . . 2 2 4 d 5 5 d d 4 4 . . . 
+        . . 2 2 2 2 2 4 4 4 2 2 2 . . . 
+        . . . 2 2 4 4 4 4 4 4 2 2 . . . 
+        . . . . . 2 2 2 2 2 2 . . . . . 
+        `, SpriteKind.Player)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (jump < 2) {
         jump += 1
@@ -150,6 +170,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         )
     }
 })
+let projectilePlayer: Sprite = null
 let jump = 0
 let boss: Sprite = null
 scene.setBackgroundImage(img`
